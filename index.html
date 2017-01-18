@@ -55,8 +55,8 @@
         // cubes are positioned by their center so we
         // offset for their height
         var y = 1 + hscale(d)/2;
-        // lets place the bars all around our camera
 
+        // lets place the bars all around our camera
         var radius = 7; //a-5 
         // var x = i - data.length/2;
         var x = radius * Math.cos(i/data.length * 2 * Math.PI)
@@ -86,8 +86,7 @@
       this.hovering = true;
       d3.select(this).transition().duration(500)
       .attr({
-        metalness: 0.5,
-        width: 2
+        radius: function(d) { return hscale(d*2)}
       })
     })
     .on("mouseleave", function(d,i) {
@@ -95,8 +94,7 @@
       this.hovering = false;
       d3.select(this).transition()
       .attr({
-        metalness: 0,
-        width: 0.5
+        radius: function(d) { return hscale(d)}
       })
     })    
     
